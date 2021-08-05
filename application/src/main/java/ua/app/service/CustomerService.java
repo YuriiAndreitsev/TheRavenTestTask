@@ -59,6 +59,7 @@ public class CustomerService {
             if (validatePhoneNumber(customer.getPhone()) && validateFullName(customer.getFullName())) {
                 customerToUpdate.setFullName(customer.getFullName());
                 customerToUpdate.setPhone(customer.getPhone());
+                customerToUpdate.setUpdated(System.currentTimeMillis()); //if it is right, simply forgot about it
                 return CustomerDTOMapper.toDTO(customerRepository.save(customerToUpdate));
             } else {
                 throw new IllegalArgumentException("Unable to UPDATE user in Database");
