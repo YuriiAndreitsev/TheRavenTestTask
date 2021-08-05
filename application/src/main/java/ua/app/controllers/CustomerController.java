@@ -1,9 +1,6 @@
 package ua.app.controllers;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -25,9 +22,7 @@ public class CustomerController {
     }
 
     @GetMapping("/customers")
-    public ResponseEntity<List<CustomerDTO>> getAllCustomers() throws JsonProcessingException {
-        String jsonObj = new ObjectMapper().writeValueAsString(new Customer("asdsad", "sadasd@asdsad", "123123123"));
-        System.out.println(jsonObj);
+    public ResponseEntity<List<CustomerDTO>> getAllCustomers(){
         return ResponseEntity.ok().body(customerService.getAllCustomers());
     }
 
